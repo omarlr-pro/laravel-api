@@ -4,6 +4,7 @@ import { routes } from "./router";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faSearch, faBookReader, faGlasses, faUser } from '@fortawesome/free-solid-svg-icons';
 import "./index.css";
+import UserContext from "./context/UserContext";
 
 function App() {
   return (
@@ -49,7 +50,10 @@ function App() {
         </div>
       </div>
     <h1 className="text-4xl">Big Heading</h1>
+       <UserContext>
       <RouterProvider router={routes} />
+      </UserContext>
+      
     </>  
   );
 }

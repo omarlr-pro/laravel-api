@@ -1,5 +1,6 @@
 import React from "react";
 import './css/bStyle.css'
+import { stateContext, useUsercontext } from "../context/UserContext";
 function Home() {
   const randomImageId = Math.floor(Math.random() * 1000) + 1;
 
@@ -10,9 +11,12 @@ function Home() {
     backgroundSize: 'cover',
     padding: '1.5rem 9%',
   };
+  const context = useUsercontext();
 
   return (
+    
     <section className="home" id="home" style={sectionStyle}>
+      {context.user.name }
       <div className="row">
         <div className="content">
           <h3>NEW BOOK</h3>
@@ -37,6 +41,7 @@ function Home() {
           </div>
         </div>
       </div>
+      
     </section>
   );
 }
