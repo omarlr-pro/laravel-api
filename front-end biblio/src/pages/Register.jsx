@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../context/UserContext';
 function Register() {
+  const context = useUserContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (context.authenticated) {
+      navigate('/');
+    }
+  }, []);
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

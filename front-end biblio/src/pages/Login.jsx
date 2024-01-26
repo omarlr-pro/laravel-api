@@ -1,20 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import Userlogin from "../publieur/Userlogin";
 import { useEffect } from "react";
-import UserContext from "../context/UserContext";
+import { useUserContext } from "../context/UserContext";
 
 function Login() {
+  const context = useUserContext();
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (UserContext.authenticated) {
-      navigate('/'); 
+    if (context.authenticated) {
+      navigate('/');
     }
   }, []);
-  return ( 
-  <div>
-    <h1>sui hada login</h1> 
-  <Userlogin/>
-  </div>
+
+  return (
+    <div>
+      <Userlogin />
+    </div>
   );
 }
 

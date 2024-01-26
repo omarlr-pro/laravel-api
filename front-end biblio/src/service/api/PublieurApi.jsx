@@ -7,12 +7,13 @@ const PublieurApi = {
     });
   },
 
-  login: async (email , password ) => {
+  login: async (email, password) => {
+    return await axiosClient.post('/api/login', { email, password });
+  },
 
-     return  await axiosClient.post('/api/login', {email ,password})
-      
-}
-
-} 
+  getUser: async () => {
+    return await axiosClient.get('/api/user');
+  },
+};
 
 export default PublieurApi;

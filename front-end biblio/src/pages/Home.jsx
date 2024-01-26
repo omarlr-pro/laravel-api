@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import './css/bStyle.css'
-import { stateContext, useUsercontext } from "../context/UserContext";
+import {  userStateContext } from "../context/UserContext";
 function Home() {
   const randomImageId = Math.floor(Math.random() * 1000) + 1;
 
@@ -11,7 +11,7 @@ function Home() {
     backgroundSize: 'cover',
     padding: '1.5rem 9%',
   };
-  const context = useUsercontext();
+  const context = useContext(userStateContext);
 
   return (
     

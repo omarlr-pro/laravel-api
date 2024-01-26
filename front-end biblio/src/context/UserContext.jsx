@@ -1,38 +1,39 @@
-import { createContext, useContext, useState } from "react";
-import PublieurApi from "../service/api/PublieurApi";
-import { useNavigate } from "react-router-dom";
+import React, { createContext, useContext, useState } from 'react';
+import PublieurApi from '../service/api/PublieurApi';
 
-export const stateContext = createContext({
+export const userStateContext = createContext({
   user: {},
-  authenticated: false,
   setUser: () => {},
   logout: () => {},
   login: (email, password) => {},
-  setAuthenticated: () => {
-  },
+  setAuthenticated: () => {},
   setToken: () => {},
 });
 
 function UserContext({ children }) {
-  const [user, setUser] = useState({ name: 'oman' });
-  const [authenticated, setAuthenticated] = useState(false);
+  const [user, setUser] = useState({ name: 'omaaaan' });
+  const [authenticated, _setAuthenticated] = useState('true' === window.localStorage.getItem('AUTHENTICATED'))
 
   const logout = () => {
-    setAuthenticated(false);
     setUser({});
+    setAuthenticated(false);
   };
 
   const login = async (email, password) => {
     return PublieurApi.login(email, password)
   }
 
+  const setAuthenticated = (isAuthenticated) => {
+    _setAuthenticated(isAuthenticated)
+    window.localStorage.setItem('AUTHENTICATED', isAuthenticated)
+  }
+
   const setToken = (token) => {
-    // Handle storing token in localStorage or a more secure storage method
     window.localStorage.setItem('token', token);
   };
 
   return (
-    <stateContext.Provider
+    <userStateContext.Provider
       value={{
         user,
         setUser,
@@ -40,12 +41,14 @@ function UserContext({ children }) {
         authenticated,
         login,
         setToken,
+        setAuthenticated, // Corrected function name
       }}
     >
       {children}
-    </stateContext.Provider>
+    </userStateContext.Provider>
   );
 }
 
 export default UserContext;
-export const useUsercontext = () => useContext(stateContext);
+
+export const useUserContext = () => useContext(userStateContext);
