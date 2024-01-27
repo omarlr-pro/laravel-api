@@ -1,5 +1,5 @@
 // App.js
-import { Link, RouterProvider } from "react-router-dom";
+import { RouterProvider, useNavigate } from "react-router-dom";
 import { routes } from "./router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,14 +8,25 @@ import {
   faBookReader,
   faGlasses,
   faUser,
+  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import "./index.css";
 import UserContext, { useUserContext } from './context/UserContext';
+import PublieurApi from "./service/api/PublieurApi";
 
 function App() {
-  const { authenticated, user } = useUserContext();
+  const { logout } = useUserContext();
+    const { authenticated, user } = useUserContext();
   console.log('Authenticated:', authenticated);
   console.log(user);
+
+  const handleLogout = () => {
+    PublieurApi.logout().then(() => {
+      logout();
+    });
+  };
+  
+
   return (
     <>
       <nav className="bg-white p-6 flex items-center justify-between shadow-md">
@@ -44,7 +55,18 @@ function App() {
             <FontAwesomeIcon icon={faGlasses} />
           </a>
           {authenticated ? (
-            <span className="text-lg ml-4">{user.name}</span>
+            <div className="flex items-center">
+               <a href="/user" className="text-2xl ml-2 cursor-pointer">
+                <FontAwesomeIcon icon={faUser} />
+              </a>
+              <button
+                className="text-2xl ml-2 cursor-pointer"
+                onClick={handleLogout}
+              >
+                 <FontAwesomeIcon icon={faSignOutAlt} />
+              </button>
+             
+            </div>
           ) : (
             <a href="/login" className="text-2xl ml-4 cursor-pointer">
               <FontAwesomeIcon icon={faUser} />

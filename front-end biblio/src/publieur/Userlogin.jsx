@@ -8,9 +8,7 @@ import { useUserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
 function Userlogin() {
-  const { authenticated } = useUserContext();
-
-  const { login, setAuthenticated ,setToken} = useUserContext();
+  const { login, setAuthenticated ,setToken ,authenticated} = useUserContext();
   const navigate = useNavigate();
   const formSchema = z.object({
     email: z.string().email().min(2).max(50),
@@ -24,38 +22,30 @@ function Userlogin() {
       password: '',
     },
   });
-  console.log(authenticated);
+  console.log('Context value in Userlogin:', { authenticated, login, setToken, setAuthenticated });
+  
+
   const onSubmit = async values => {
     try {
       const { status, data } = await login(values.email, values.password);
   
       // Log the entire response object
       console.log('Login status:', status);
+      console.log('API Response:', data);
   
       // Check if the status exists
-      if (status) {
-        if (status === 204) {
-          navigate('/');
-          setToken(data.token);
-          setAuthenticated(true);
-        } else {
-          console.error('Login failed');
-        }
+      if (status === 204) {
+        setToken(data.token);
+        setAuthenticated(true);
+        navigate('/');
       } else {
-        console.error('Unexpected response format. Please try again.');
+        console.error('Login failed');
       }
     } catch (error) {
       console.error('Error during login:', error);
-  
     }
   };
   
-  
-  
-  
-  
-  
-
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

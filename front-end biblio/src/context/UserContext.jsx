@@ -31,6 +31,9 @@ function UserContext({ children }) {
   const setToken = (token) => {
     window.localStorage.setItem('token', token);
   };
+  const storedToken = window.localStorage.getItem('token');
+  console.log('Stored Token:', storedToken);
+    
 
   return (
     <userStateContext.Provider
