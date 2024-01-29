@@ -16,16 +16,15 @@ import PublieurApi from "./service/api/PublieurApi";
 
 function App() {
   const { logout } = useUserContext();
-    const { authenticated, user } = useUserContext();
+    const { authenticated, user , books  } = useUserContext();
   console.log('Authenticated:', authenticated);
   console.log(user);
-
   const handleLogout = () => {
     PublieurApi.logout().then(() => {
       logout();
     });
   };
-  
+  console.log(books);
 
   return (
     <>
@@ -48,9 +47,7 @@ function App() {
         </form>
 
         <div className="icons flex items-center">
-          <a href="/link-to-book-reader" className="text-2xl cursor-pointer">
-            <FontAwesomeIcon icon={faBookReader} />
-          </a>
+          
           <a href="/link-to-glasses" className="text-2xl ml-4 cursor-pointer">
             <FontAwesomeIcon icon={faGlasses} />
           </a>
@@ -59,6 +56,9 @@ function App() {
                <a href="/user" className="text-2xl ml-2 cursor-pointer">
                 <FontAwesomeIcon icon={faUser} />
               </a>
+              <a href="/add-book" className="text-2xl cursor-pointer">
+            <FontAwesomeIcon icon={faBookReader} />
+          </a>
               <button
                 className="text-2xl ml-2 cursor-pointer"
                 onClick={handleLogout}
@@ -91,6 +91,7 @@ function App() {
           </a>
         </div>
       </div>
+     
       <UserContext>
         <RouterProvider router={routes} />
       </UserContext>

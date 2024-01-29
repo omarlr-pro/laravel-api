@@ -8,6 +8,8 @@ import Home from '../pages/Home';
 import Dashboardlayot from '../layouts/dashboard/Dashboardlayot';
 import Guestlayout from '../layouts/Guestlayout';
 import Userinfo from '../publieur/Userinfo';
+import Addbook from '../publieur/Addbook';
+
 
 
 export  const routes = createBrowserRouter([
@@ -47,6 +49,10 @@ export  const routes = createBrowserRouter([
         {
           path: '/user',
           element: <Userinfo/>,
+        },
+        {
+          path: '/add-book',
+          element: <Addbook/>,
         },
       ]
     },

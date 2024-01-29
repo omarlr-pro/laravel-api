@@ -29,11 +29,9 @@ function Userlogin() {
     try {
       const { status, data } = await login(values.email, values.password);
   
-      // Log the entire response object
       console.log('Login status:', status);
       console.log('API Response:', data);
   
-      // Check if the status exists
       if (status === 204) {
         setToken(data.token);
         setAuthenticated(true);
