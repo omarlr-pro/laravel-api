@@ -44,7 +44,6 @@ function Userinfo() {
 
   return (
     <>
-      <h1>hey {user.name}</h1>
       <ul>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">

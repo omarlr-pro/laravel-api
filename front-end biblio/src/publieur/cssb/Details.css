@@ -1,0 +1,70 @@
+/* Details.css */
+
+h2 {
+  font-size: 28px; /* Increase font size for the title */
+  margin-bottom: 15px;
+}
+
+strong {
+  font-size: 24px; /* Increase font size for the book name */
+  display: block;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 18px; /* Increase font size for the book description */
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px; /* Increase border radius for the book image */
+  margin-top: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adjust box shadow for the image */
+  transition: transform 0.3s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.05); /* Adjust scale on hover for the image */
+}
+
+h3 {
+  font-size: 24px; /* Increase font size for the critiques heading */
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 18px; /* Increase font size for the critiques */
+  margin-bottom: 12px;
+}
+
+textarea,
+input {
+  width: 100%;
+  padding: 10px; /* Adjust padding for the input elements */
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Adjust border radius for the input elements */
+  font-size: 16px; /* Adjust font size for the input elements */
+}
+
+button {
+  background-color: #3498db; /* Change button color */
+  color: #fff;
+  padding: 12px 20px; /* Adjust padding for the button */
+  border: none;
+  border-radius: 6px; /* Adjust border radius for the button */
+  cursor: pointer;
+  font-size: 18px; /* Adjust font size for the button */
+}
+
+button:hover {
+  background-color: #2980b9; /* Darker color on hover */
+}

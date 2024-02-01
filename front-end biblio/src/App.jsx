@@ -13,12 +13,13 @@ import {
 import "./index.css";
 import UserContext, { useUserContext } from './context/UserContext';
 import PublieurApi from "./service/api/PublieurApi";
+import AfficheBook from "./publieur/AfficheBook";
 
 function App() {
   const { logout } = useUserContext();
-    const { authenticated, user , books  } = useUserContext();
+    const { authenticated,  books  } = useUserContext();
   console.log('Authenticated:', authenticated);
-  console.log(user);
+
   const handleLogout = () => {
     PublieurApi.logout().then(() => {
       logout();
@@ -80,7 +81,7 @@ function App() {
           <a href="/" className="hover:bg-dark-color py-3 px-6">
             Home
           </a>
-          <a href="*" className="hover:bg-dark-color py-3 px-6">
+          <a href="/library" className="hover:bg-dark-color py-3 px-6">
             Library
           </a>
           <a href="#*" className="hover:bg-dark-color py-3 px-6">
@@ -91,7 +92,6 @@ function App() {
           </a>
         </div>
       </div>
-     
       <UserContext>
         <RouterProvider router={routes} />
       </UserContext>

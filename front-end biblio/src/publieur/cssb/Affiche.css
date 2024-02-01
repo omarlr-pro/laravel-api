@@ -1,0 +1,176 @@
+
+:root {
+  --booksiz1--: 20.3rem;
+  --green: #72c775; /* Define your preferred green color */
+  --dark-color: #333; /* Define your preferred dark color */
+}
+
+.heading {
+  font-size: 50px;
+  color: black;
+  text-align: center;
+  box-shadow: 16px 14px 20px #5460548c;
+  border-radius: 10px;
+}
+
+/* the new book style */
+.library {
+  padding: 1.5rem 9%;
+  background-image: url(/images/cover.jpg);
+  background-size: cover;
+}
+
+.container1 {
+  z-index: 1;
+  perspective: 3000px;
+}
+
+.container1 .book1,
+.img1 {
+  position: relative;
+  display: block;
+  width: calc(var(--booksiz1--) / 1.37);
+  height: var(--booksiz1--);
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(45deg, #fd5001 0%, #fd5001 100%);
+  font-family: acumin-pro, sans-serif;
+  -webkit-box-shadow: calc(var(--booksiz1--) / 43) calc(var(--booksiz1--) / 42) 8px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 13px 13px 8px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: calc(var(--booksiz1--) / 43) calc(var(--booksiz1--) / 42) 8px 0px rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+  color: #2b2b2b;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.5s;
+  -moz-transition: -moz-transform 0.5s;
+  transition: transform 0.5s;
+}
+
+.container1 .book1:hover {
+  -webkit-transform: rotate3d(0, 1, 0, 40deg);
+  -moz-transform: rotate3d(0, 1, 0, 40deg);
+  transform: rotate3d(0, 1, 0, 40deg);
+}
+
+.container1 .book1 > div,
+.container1 .front > div {
+  display: block;
+  position: absolute;
+}
+
+.container1 .front {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 0% 50%;
+  -moz-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  -webkit-transition: -webkit-transform 0.5s;
+  -moz-transition: -moz-transform 0.5s;
+  transition: transform 0.5s;
+  -webkit-transform: translate3d(0, 0, 20px);
+  -moz-transform: translate3d(0, 0, 20px);
+  transform: translate3d(0, 0, calc(var(--booksiz1--) / 28));
+  z-index: 10;
+}
+
+.container1 .front > div {
+  width: calc(var(--booksiz1--) / 1.37);
+  height: var(--booksiz1--);
+}
+
+.container1 .left-side1 {
+  width: calc(var(--booksiz1--) / 14.4);
+  left: calc(var(--booksiz1--) / -27.4);
+  height: var(--booksiz1--);
+  background-color: #fd5001;
+  -webkit-transform: rotate3d(0, 1, 0, -90deg);
+  -moz-transform: rotate3d(0, 1, 0, -90deg);
+  transform: rotate3d(0, 1, 0, -90deg);
+}
+
+.container1 .front > div {
+  border-radius: 0 3px 3px 0;
+  box-shadow: inset 4px 0 10px #fd5001;
+}
+
+.container1 .front:after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: -1px;
+  width: 1px;
+}
+
+.container1 .cover1:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(var(--booksiz1--) / 56);
+  bottom: 0;
+  width: 3px;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.container1 h2 {
+  width: calc(var(--booksiz1--) / 1.1);
+  height: 40px;
+  color: #ffffff;
+  font-size: calc(var(--booksiz1--) / 27.7);
+  line-height: calc(var(--booksiz1--) / 13.7);
+  padding-right: 10px;
+  text-align: right;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: rotate(90deg) translateY(-40px);
+  -moz-transform: rotate(90deg) translateY(-40px);
+  transform: rotate(90deg) translateY(calc(var(--booksiz1--) / -13.7));
+}
+
+.cover1 {
+  background: linear-gradient(45deg, #dad5dc 0%, #f2ebf4 100%);
+}
+
+.left-side1 h2 span:first-child {
+  font-weight: 400;
+  font-size: 13px;
+  padding-right: 20px;
+}
+
+.left-side1 h2 span:last-child {
+  font-family: acumin-pro, sans-serif;
+}
+
+.window {
+  width: max-content;
+  padding: 5rem;
+}
+
+.botona {
+  margin-top: calc(var(--booksiz1--) / 10.8);
+  text-align: center;
+}
+
+.reading {
+  padding: calc(var(--booksiz1--) / 19.2) calc(var(--booksiz1--) / 7.1);
+  border-radius: 0.5rem;
+  color: #fff; /* Change to white text color */
+  background: var(--green);
+  font-size: calc(var(--booksiz1--) / 12.5);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.reading:hover {
+  background: var(--dark-color);
+}
+
+.lctoba {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: spa;
+}

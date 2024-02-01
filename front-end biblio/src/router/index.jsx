@@ -9,6 +9,8 @@ import Dashboardlayot from '../layouts/dashboard/Dashboardlayot';
 import Guestlayout from '../layouts/Guestlayout';
 import Userinfo from '../publieur/Userinfo';
 import Addbook from '../publieur/Addbook';
+import AfficheBook from '../publieur/AfficheBook';
+import BookDetails from '../publieur/BookDetails';
 
 
 
@@ -20,13 +22,20 @@ export  const routes = createBrowserRouter([
                 path: '/',
                 element:  <Home/> ,
               },
-             
-             
               
               {
                 path: '*',
                 element: <Notfounds/>
                 ,
+              },
+              {
+                path: '/library',
+                element:<AfficheBook/>
+                ,
+              },
+              {
+                path: '/book/:id',  
+                element: <BookDetails/>,  
               },
         ]
     },

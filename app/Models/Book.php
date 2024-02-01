@@ -2,18 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    use HasFactory;
-    protected $fillable = [
-        'name',
-        'image',
-        'description',
-        'author', // Add any other attributes here
-        'published_at',
-    ];
-    
+    protected $fillable = ['name', 'image', 'description'];
+
+    public function critiques()
+    {
+        return $this->hasMany(Critique::class);
+    }
 }
+

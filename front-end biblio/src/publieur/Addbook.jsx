@@ -1,103 +1,96 @@
 import React, { useState } from 'react';
-import { useUserContext } from '../context/UserContext';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-function BookForm() {
-  const { user } = useUserContext();
+function AddBookForm() {
+  const navigate = useNavigate();
   const [bookData, setBookData] = useState({
     name: '',
-    text: '', // Change 'image' to 'text'
     description: '',
+    image: null,
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
+
     setBookData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: files ? files[0] : value,
     }));
   };
-
-  const { addBook } = useUserContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { name, text, description } = bookData;
+    const formData = new FormData();
+    formData.append('name', bookData.name);
+    formData.append('description', bookData.description);
 
-    const addedBook = await addBook({ name, text, description });
-
-    if (addedBook) {
-      console.log('Book added successfully:', addedBook);
-    } else {
-      console.log('Failed to add book',addedBook);
+    if (bookData.image) {
+      formData.append('image', bookData.image);
     }
-    setBookData({
-      name: '',
-      text: '', // Change 'image' to 'text'
-      description: '',
-    });
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/books', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      console.log('Book added successfully:', response.data);
+
+      // Navigate to the /library route after successful book addition
+      navigate('/library');
+    } catch (error) {
+      console.error('Failed to add book', error);
+    }
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Book Name Input */}
-        <div>
-          <label htmlFor="bookName" className="block mb-2 text-sm font-medium text-gray-900">
-            Book Name
+    <div className="container mx-auto mt-8">
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-8 border shadow-lg">
+        
+
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
+            Name:
           </label>
           <input
             type="text"
-            id="bookName"
+            id="name"
             name="name"
             value={bookData.name}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
-            required
+            className="w-full border rounded py-2 px-3"
           />
         </div>
 
-        {/* Text Input (replacing Image Input) */}
-        <div>
-          <label htmlFor="bookText" className="block mb-2 text-sm font-medium text-gray-900">
-            Text
-          </label>
-          <input
-            type="text"
-            id="bookText"
-            name="text" // Change 'image' to 'text'
-            value={bookData.text}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
-
-        {/* Description Input */}
-        <div>
-          <label htmlFor="bookDescription" className="block mb-2 text-sm font-medium text-gray-900">
-            Description
+        <div className="mb-4">
+          <label htmlFor="description" className="block text-gray-700 text-sm font-bold mb-2">
+            Description:
           </label>
           <textarea
-            id="bookDescription"
+            id="description"
             name="description"
             value={bookData.description}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
-            required
+            className="w-full border rounded py-2 px-3"
           />
         </div>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        >
-          Add Book
+        <div className="mb-4">
+          <label htmlFor="image" className="block text-gray-700 text-sm font-bold mb-2">
+            Image:
+          </label>
+          <input type="file" id="image" name="image" onChange={handleChange} className="py-2" />
+        </div>
+
+        <button type="submit" className="bg-blue-500 text-72c775 py-2 px-4 rounded">
+          Submit
         </button>
       </form>
     </div>
   );
 }
 
-export default BookForm;
+export default AddBookForm;

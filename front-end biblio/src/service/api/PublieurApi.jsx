@@ -22,14 +22,7 @@ const PublieurApi = {
   getUser: async () => {
     return await axiosClient.get('/api/user');
   },
-
-  getAllBooks: async () => {
-    return await axiosClient.get('/api/books');
-  },
-
-  addBook: async ({ name, text, description }) => {
-    return await axiosClient.post('/api/books', { name, text, description });
-  },
+  
 };
 
 export default PublieurApi;
