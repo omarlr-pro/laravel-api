@@ -32,9 +32,7 @@ function Userinfo() {
   };
 
   const handleAddBook = () => {
-    // Call your API or perform actions to add the new book
     console.log('Adding new book:', newBook);
-    // Reset the newBook state after adding
     setNewBook({
       name: '',
       image: '',

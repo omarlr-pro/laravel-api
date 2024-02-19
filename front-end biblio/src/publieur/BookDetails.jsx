@@ -1,4 +1,3 @@
-// BookDetails.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -26,23 +25,19 @@ function BookDetails() {
   }, [id]);
 
   useEffect(() => {
-    // Fetch critiques for the specific book by ID
     axios
       .get(`http://localhost:8000/api/critiques/${id}`)
       .then((response) => {
-        setCritiques(response.data || []); // Update this line
+        setCritiques(response.data || []); 
         console.log(response.data);
       })
       .catch((error) => {
         console.error('Error fetching critiques:', error);
       });
   }, [id]);
-
   useEffect(() => {
     if (!window.localStorage.getItem('access_token')) {
-      // Handle the case when the user is not authenticated
     }
-
     PublieurApi.getUser()
       .then((response) => {
         setUser(response.data);
@@ -72,8 +67,8 @@ function BookDetails() {
         console.log('Critique added successfully');
       })
       .catch((error) => {
+        console.log(rating);
         console.error('Error adding critique:', error);
-        // Provide feedback to the user, e.g., show an error message
       });
   };
 

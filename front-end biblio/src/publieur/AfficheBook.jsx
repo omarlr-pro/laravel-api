@@ -7,15 +7,11 @@ function AfficheBook() {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    // Fetch books from the API
     axios.get('http://localhost:8000/api/books')
       .then(response => {
-        const booksWithAbsoluteImagePaths = response.data.map(book => ({
-          ...book,
-          // Assuming 'image' is the correct property name
-          image: `http://localhost:8000/storage/${book.image}`
+        const imgpath = response.data.map(book => ({...book,image: `http://localhost:8000/storage/${book.image}`
         }));
-        setBooks(booksWithAbsoluteImagePaths);
+        setBooks(imgpath);
       })
       .catch(error => {
         console.error('Error fetching books:', error);
@@ -26,7 +22,6 @@ function AfficheBook() {
     window.location.href = `/book/${bookId}`;
   };
 
-  // Filter books based on search term
   const filteredBooks = books.filter(book =>
     book.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

@@ -13,9 +13,9 @@ return new class extends Migration
         Schema::create('critiques', function (Blueprint $table) {
             $table->id();
             $table->text('user')->default("none");
-            $table->foreignId('book_id')->nullable()->constrained(); // Make book_id nullable
+            $table->foreignId('book_id')->nullable()->constrained();
             $table->text('content');
-            $table->integer('rating');
+            $table->integer('rating')->nullable();
             $table->timestamps();
         });
         

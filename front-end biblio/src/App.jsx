@@ -1,4 +1,3 @@
-// App.js
 import { RouterProvider, useNavigate } from "react-router-dom";
 import { routes } from "./router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,18 +33,7 @@ function App() {
           <FontAwesomeIcon icon={faBook} className="mr-2" />
           bookman
         </a>
-        <form className="search-form w-80 h-16 border border-black bg-white flex items-center rounded-md">
-          <input
-            type="search"
-            id="search-box"
-            placeholder="Search here..."
-            className="text-base p-3 w-full outline-none border-none text-black"
-          />
-          <button
-            type="submit"
-            className="fas fa-search text-2xl p-3 cursor-pointer text-black"
-          ></button>
-        </form>
+        
 
         <div className="icons flex items-center">
           

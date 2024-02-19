@@ -1,70 +1,59 @@
 /* Details.css */
 
-h2 {
-  font-size: 28px; /* Increase font size for the title */
-  margin-bottom: 15px;
+.book-details-container {
+  padding: 1.5rem;
+  background-color: #f8f8f8; /* Light gray background color */
 }
 
-strong {
-  font-size: 24px; /* Increase font size for the book name */
-  display: block;
-  margin-bottom: 15px;
-}
-
-p {
-  font-size: 18px; /* Increase font size for the book description */
-  margin-bottom: 20px;
-}
-
-img {
+.book-details-container img.book-image {
   max-width: 100%;
   height: auto;
-  border-radius: 12px; /* Increase border radius for the book image */
-  margin-top: 20px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adjust box shadow for the image */
-  transition: transform 0.3s ease-in-out;
+  border-radius: 8px; /* Add rounded corners to the book image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
 }
 
-img:hover {
-  transform: scale(1.05); /* Adjust scale on hover for the image */
+.book-details-container img.book-image:hover {
+  transform: scale(1.1); /* Scale up the image on hover */
 }
 
-h3 {
-  font-size: 24px; /* Increase font size for the critiques heading */
-  margin-top: 20px;
-  margin-bottom: 15px;
+.critiques-container {
+  margin-top: 20px; /* Add some space between book details and critiques */
 }
 
-ul {
+.critiques-list {
   list-style-type: none;
   padding: 0;
 }
 
-li {
-  font-size: 18px; /* Increase font size for the critiques */
-  margin-bottom: 12px;
+.critique-item {
+  margin-bottom: 8px;
+  font-size: 16px; /* Adjust the font size of critiques */
 }
 
-textarea,
-input {
+.critique-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.critique-input {
   width: 100%;
-  padding: 10px; /* Adjust padding for the input elements */
+  padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 6px; /* Adjust border radius for the input elements */
-  font-size: 16px; /* Adjust font size for the input elements */
+  border-radius: 6px;
+  font-size: 16px;
 }
 
-button {
-  background-color: #3498db; /* Change button color */
+.add-critique-btn {
+  background-color: #4caf50; /* Green button color */
   color: #fff;
-  padding: 12px 20px; /* Adjust padding for the button */
+  padding: 12px 15px; /* Adjust padding for the button */
   border: none;
-  border-radius: 6px; /* Adjust border radius for the button */
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 18px; /* Adjust font size for the button */
 }
 
-button:hover {
-  background-color: #2980b9; /* Darker color on hover */
+.add-critique-btn:hover {
+  background-color: #45a049; /* Darker green color on hover */
 }

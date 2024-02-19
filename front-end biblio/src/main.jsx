@@ -7,6 +7,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <UserContext>
     <React.StrictMode>
   <App />
-</React.StrictMode></UserContext>,
+</React.StrictMode>
+</UserContext>,
   
 )
